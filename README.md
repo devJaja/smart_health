@@ -40,6 +40,7 @@ Security: [Mention encryption methods, e.g., end-to-end encryption with blockcha
 GETTING STARTED
 
 Prerequisites
+
 Ensure you have the following installed:
 
 Node.js
@@ -49,6 +50,7 @@ IPFS client or API key for services like Pinata
 [Optional] Blockchain node or provider (e.g., Infura, Alchemy)
 
 INSTALLATION
+
 Clone the repository:
 
 bash
@@ -67,6 +69,7 @@ npm install
 Configure the .env file:
 
 Add blockchain network configurations, IPFS API keys, and other environment variables.
+
 Start the development server:
 
 bash
