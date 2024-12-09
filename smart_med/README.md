@@ -1,6 +1,9 @@
-Overview
-SMARTMED is a robust and secure health management application designed to simplify medical record handling for both patients and healthcare providers. The platform includes a Patient Dashboard and a Doctor Dashboard, tailored for seamless and efficient interactions. SMARTMED leverages cutting-edge technologies like IPFS (InterPlanetary File System) for decentralized and secure data storage, ensuring privacy, accessibility, and compliance with healthcare standards.
-Features
+OVERVIEW
+
+SMARTHEALTH is a robust and secure health management application designed to simplify medical record handling for both patients and healthcare providers. The platform includes a Patient Dashboard and a Doctor Dashboard, tailored for seamless and efficient interactions. SMARTHEALTH leverages cutting-edge technologies like IPFS (InterPlanetary File System) for decentralized and secure data storage, ensuring privacy, accessibility, and compliance with healthcare standards.
+
+FEATURES
+
 -Patient Dashboard
 Personal Information Management: View and update patient profiles, including contact and emergency details.
 Recent Vitals: Monitor key health parameters such as blood pressure, heart rate, temperature, and more.
@@ -8,28 +11,34 @@ Doctors List: Maintain a list of consulting doctors with their specialties and c
 Upcoming Appointments: Schedule, reschedule, or cancel appointments with ease.
 Medications and Prescriptions: Track current medications, dosages, frequency, and duration, along with the prescribing doctor.
 Test Records: Access test results and monitor historical test data.
+
 -Doctor Dashboard
 Patient Management: Access, update, and manage patient records securely.
 Appointment Scheduling: View and manage upcoming appointments.
 Prescriptions Management: Prescribe and monitor medications for patients.
 Test Recommendations: Request tests and review results seamlessly.
-Objectives
-Ensure Data Privacy and Security
-SMARTMED uses smart contracts and IPFS for secure, decentralized data storage, ensuring data integrity and protection against unauthorized access.
 
-Improve Access to Long-Term Care Services
-By organizing patient data and offering intuitive dashboards, SMARTMED facilitates better communication and decision-making among caregivers.
+OBJECTIVES
 
-Establish National Standards
-SMARTMED's architecture adheres to standardized processes for electronic healthcare transactions, promoting interoperability and compliance with healthcare regulations.
+-Ensure Data Privacy and Security
+SMARTHEALTH uses smart contracts and IPFS for secure, decentralized data storage, ensuring data integrity and protection against unauthorized access.
 
-Technologies Used
+-Improve Access to Long-Term Care Services
+By organizing patient data and offering intuitive dashboards, SMARTHEALTH facilitates better communication and decision-making among caregivers.
+
+-Establish National Standards
+SMARTHEALTH's architecture adheres to standardized processes for electronic healthcare transactions, promoting interoperability and compliance with healthcare regulations.
+
+TECHNOLOGIES USED
+
 Frontend: React JS with Vite
 Backend: Smart Contracts
 Database: IPFS (e.g., Pinata) for decentralized file storage
-Blockchain Platform: [Specify blockchain technology, e.g., Ethereum, Polygon]
+Blockchain Platform: [Specify blockchain technology, e.g., Ethereum, Lisk]
 Security: [Mention encryption methods, e.g., end-to-end encryption with blockchain key management]
-Getting Started
+
+GETTING STARTED
+
 Prerequisites
 Ensure you have the following installed:
 
@@ -38,17 +47,18 @@ Package Manager (npm/yarn)
 A compatible blockchain wallet (e.g., MetaMask)
 IPFS client or API key for services like Pinata
 [Optional] Blockchain node or provider (e.g., Infura, Alchemy)
-Installation
+
+INSTALLATION
 Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/MEDPAL.git
+git clone https://github.com/devJaja/smart_health.git 
 Navigate to the project directory:
 
 bash
 Copy code
-cd SMARTMED
+cd smart_health
 Install dependencies:
 
 bash
@@ -80,6 +90,6 @@ License
 This project is licensed under the MIT License.
 
 Contact
-For questions, suggestions, or support, contact us at your-email@example.com.
+For questions, suggestions, or support, contact us at jajak5242@gmail.com.
 
-Empowering healthcare with SMARTMED!
+Empowering healthcare with SMARTHEALTH!
