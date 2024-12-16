@@ -6,7 +6,14 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          100: "#B74FDD",
+          200: "#E649D6",
+        },
+      },
+    },
   },
   plugins: [],
 }

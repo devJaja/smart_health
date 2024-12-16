@@ -7,7 +7,7 @@ export function Account() {
   const { data: ensAvatar } = useEnsAvatar({ name: ensName })
 
   return (
-    <div className='flex'>
+    <div className='flex gap-2'>
 
       {ensAvatar && <img alt="ENS Avatar" src={ensAvatar} />}
       {address && 

@@ -1,12 +1,12 @@
 import { http, createConfig } from 'wagmi';
 import { sepolia, lisk, mainnet } from 'wagmi/chains';
-import { injected} from 'wagmi/connectors';
+import { metaMask} from 'wagmi/connectors';
 
 
 const config = createConfig({
   chains: [mainnet, sepolia, lisk],
   connectors: [
-    injected(),
+    metaMask(),
   ],
   transports: {
     [mainnet.id]: http(),
