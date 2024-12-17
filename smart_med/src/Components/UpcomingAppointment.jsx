@@ -6,13 +6,13 @@ const UpcomingAppointments = () => {
       date: 'Today',
       time: '11:00 am',
       doctor: 'Dorcas Dakkas',
-      description: 'Lorem ipsum dolor sit amet consectetur.',
+      description: 'Brain Surgery.',
     },
     {
       date: 'Today',
       time: '09:00 am',
       doctor: 'Demi Wilkinson',
-      description: 'Lorem ipsum dolor sit amet consectetur.',
+      description: 'Maleria and Typhiod.',
     },
   ];
 

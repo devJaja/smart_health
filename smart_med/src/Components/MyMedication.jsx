@@ -41,7 +41,7 @@ const MedicationAndTest = () => {
   ];
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-16 mt-4 bg-gray-50 min-h-screen">
       {/* Medications Section */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
         <h2 className="text-2xl font-semibold mb-4">

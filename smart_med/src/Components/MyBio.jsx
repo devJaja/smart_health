@@ -1,4 +1,3 @@
-import React from 'react';
 import { useReadContract } from 'wagmi';
 
 const MyBio = () => {
@@ -6,7 +5,7 @@ const MyBio = () => {
     functionName: 'getPatientId',
   })
   return (
-    <div className="bg-white shadow rounded-lg p-4 w-full max-w-sm">
+    <div className="bg-white shadow rounded-lg p-2 gap-4 w-full max-w-sm">
       <h2 className="text-lg font-bold mb-2">My Bio</h2>
       <div className="flex items-center mb-4">
         <img

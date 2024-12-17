@@ -6,6 +6,11 @@ import PatientForm from './Components/PatientForm'
 import { WagmiProvider, useAccount } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import PatientDashboard from "./Components/PatientDashboard";
+import Doctor from "./Components/Doctor";
+import DoctorDashboard from "./Components/DoctorsDashboard";
+import PatientOptions from "./Components/PatientOptions";
+import MyMedication from "./Components/MyMedication";
+import PatientInfo from "./Components/PatientsInfo";
 import config from '../config'; 
 
 const queryClient = new QueryClient();
@@ -31,6 +36,11 @@ function App() {
                     <Route path="/about" element={<h1>PatientDashboard</h1>} />
                     <Route path="/patient-form" element={<PatientForm />} /> 
                     <Route path="/patient-dashboard" element={<PatientDashboard />} />
+                    <Route path="/doctor" element={<Doctor />} />
+                    <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+                    <Route path="/patient-options" element={<PatientOptions />} />
+                    <Route path="/my-medication" element={<MyMedication />} />
+                    <Route path="/patient-info" element={<PatientInfo />} />
                   </Routes> 
                 </main>
               </Router> 

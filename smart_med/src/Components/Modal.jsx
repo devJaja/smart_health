@@ -12,10 +12,10 @@ const Modal = ({ isOpen, onClose }) => {
       <div className="bg-white rounded-lg p-6 w-80 shadow-lg relative">
         <h2 className="text-xl font-semibold mb-4 text-center">Choose an Option</h2>
         <div className="flex flex-col gap-4">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition" onClick={() => navigate('/patient-form') }>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition" onClick={() => navigate('/patient-options') }>
             Patient
           </button>
-          <button className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition">
+          <button className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition" onClick={() => navigate('/doctor') }>
             Doctor
           </button>
         </div>

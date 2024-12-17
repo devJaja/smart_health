@@ -1,4 +1,3 @@
-import React from "react";
 
 const DoctorDashboard = () => {
   const appointments = [
@@ -30,7 +29,7 @@ const DoctorDashboard = () => {
   ];
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen flex flex-col gap-6">
+    <div className="p-16 mt-4 bg-gray-50 min-h-screen flex flex-col  gap-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left Section */}
         <div className="bg-white p-4 rounded-lg shadow-md">

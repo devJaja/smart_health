@@ -4,10 +4,6 @@ import dortor from '../assets/dorctor.png';
 import female_clients from '../assets/client.png';
 import male from '../assets/maleClient.png';
 import Modal from './Modal';
-import MedicationAndTest from './MyMedication';
-import MyBio from './MyBio';
-import MyDoctors from './MyDoctor';
-import DoctorDashboard from './DoctorsDashboard';
 
 
 const Hero = () => {
@@ -55,9 +51,7 @@ const Hero = () => {
           {/* Modal Component */}
           <Modal isOpen={isModalOpen} onClose={closeModal} />
         </div>
-
       </div> 
-      <DoctorDashboard/>
     </>
   )
 }

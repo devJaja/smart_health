@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import { abi } from '../../abi';
-import {toast, ToastContainer} from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
 // import { ethers } from 'ethers';
 // import { writeContract } from 'viem/actions';
@@ -15,7 +14,6 @@ const PatientForm = () => {
   const {
     register,
     handleSubmit, 
-    reset,
     formState: { errors },
   } = useForm();
   const [filePreview, setFilePreview] = useState(null);
@@ -37,26 +35,26 @@ const PatientForm = () => {
     console.log(data)
 
     // const value = data
-    let sent = writeContract({
+    writeContract({
       address: '0x4F556164A12aA71c4f635cbBbeD2690831A4aBAD',
       abi,
       functionName: 'addPatientDetails',
-      args: [data.name,convertToTimestamp(data.dob), data.gender,123456, data.bloodType, data.nationality]
+      args: [data.name,convertToTimestamp(data.dob), data.gender,12345, data.bloodType, data.nationality]
     })
 
-    if(sent.addPatientDetails == 'addPatientDetails'){
-      toast.success("Patient Details Added Successfully!", {
-        position: "top-right",
-        autoClose: 3000, // Auto close after 3 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      reset();
-    }
+    // if(sent.addPatientDetails == 'addPatientDetails'){
+    //   toast.success("Patient Details Added Successfully!", {
+    //     position: "top-right",
+    //     autoClose: 3000, // Auto close after 3 seconds
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   reset();
+    // }
   }
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
@@ -138,17 +136,18 @@ const PatientForm = () => {
             <p className="text-sm text-red-500">{errors.age.message}</p>
           )}
         </div>
-
         <div>
           <label className="block text-gray-700 dark:text-white font-semibold">
             Gender <span className="text-red-500">*</span>
           </label>
-          <input
-            type="text"
-            placeholder="Input your gender"
+          <select
             className="mt-1 p-2 border border-gray-300 rounded w-full"
-            {...register("gender", { required: "Gender is required" })}
-          />
+            {...register("gender", { required: "Gender type is required" })}
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+           
+          </select>
           {errors.gender && (
             <p className="text-sm text-red-500">{errors.gender.message}</p>
           )}
@@ -247,11 +246,11 @@ const PatientForm = () => {
         </div>
         {error && error.message && error.message}
 
-        { hash && alert(<div>Hash: {hash}</div>)}
+        { hash && <div>in progress... Hash: {hash}</div>}
         { isConfirming && <div>Confirming...</div>}
         {isConfirmed && <div>Transaction Confirmed Successfully</div> && setTimeout(() => {
           navigate('/patient-dashboard');
-        }, 5000) }
+        }, 3000) }
 
         <button
           type="submit"
@@ -260,137 +259,6 @@ const PatientForm = () => {
           Submit
         </button>
       </form>
-
-      {/* <form onSubmit={handleEventSubmit}>
-        <div className='dark:text-white'>
-          <label className="block text-gray-700 dark:text-white font-semibold">
-            Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            placeholder="name"
-            value={patientName}
-            id='patientName'
-            onChange={(e) => setPatientName(e.target.value)}
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
-          />
-        </div>
-        <div className='dark:text-white'>
-          <label className="block text-gray-700 dark:text-white font-semibold">
-            Date of Birth <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            placeholder="enter date of birth"
-            value={patientDOB}
-            id='patientDOB'
-            onChange={(e) => setPatientDOB(e.target.value)}
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
-          />
-        </div>
-        <div className='dark:text-white'>
-          <label className="block text-gray-700 dark:text-white font-semibold">
-            Gender <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            placeholder="gender"
-            value={patientGender}
-            id='patientGender'
-            onChange={(e) => setPatientGender(e.target.value)}
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
-          />
-        </div>
-        <div className='dark:text-white'>
-          <label className="block text-gray-700 dark:text-white font-semibold">
-          Emergency Contact <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="tel"
-            placeholder="gender"
-            value={patientEmergency}
-            id='patientGender'
-            onChange={(e) => setPatientEmergency(e.target.value)}
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-gray-700 dark:text-white font-semibold">
-            Blood Type <span className="text-red-500">*</span>
-          </label>
-          <select
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
-            value={bloodType}
-            id='bloodType'
-            onChange={(e) => setBloodType(e.target.value)}
-            required
-          >
-            <option value="">Select blood group</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-          </select>
-        </div>
-        <div className='dark:text-white'>
-          <label className="block text-gray-700 dark:text-white font-semibold">
-            Nationality <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Nationality"
-            value={nationality}
-            id='nationality'
-            onChange={(e) => setNationality(e.target.value)}
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
-          />
-        </div>
-        <div className="p-6 bg-gray-200 border border-gray-300 rounded-lg text-center">
-          <label
-            htmlFor="file-upload"
-            className="cursor-pointer"
-          >
-            <div className="text-4xl text-purple-500 mb-4">
-              <i className="fas fa-cloud-upload-alt"></i>
-            </div>
-            <p>
-              Drag your file(s) or{" "}
-              <span className="text-purple-400 underline">browse</span>
-            </p>
-            <p className="text-sm text-gray-400">Max 10 MB files are allowed</p>
-            <p className="text-sm text-gray-400">JPEG, PNG</p>
-          </label>
-          <input
-            id="file-upload"
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={(e) => {
-              handleFileChange(e);
-            
-          />
-          {filePreview && (
-            <div className="mt-4">
-              <img
-                src={filePreview}
-                alt="Selected Preview"
-                style={{ width: "100px", height: "100px" }}
-              />
-            </div>
-          )}
-        </div>
-        <button
-        type="submit"
-        className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded"
-        >
-          Submit
-        </button>
-      </form> */}
     </div>
   );
 };
