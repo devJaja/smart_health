@@ -3,13 +3,18 @@ import { useState } from 'react';
 import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import { abi } from '../../abi';
 import { useNavigate } from 'react-router-dom';
-// import { ethers } from 'ethers';
-// import { writeContract } from 'viem/actions';
-// import { config } from './config'
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import FormData from "form-data";
+
+
 const PatientForm = () => {
 
   const navigate = useNavigate();
   const {  data: hash, error, writeContract  } = useWriteContract();
+  const [success, setSuccess] = useState(false);
+  const [image, setImage] = useState(null);
+  const [imageCID, setImageCID] = useState(null);
 
   const {
     register,
@@ -18,23 +23,11 @@ const PatientForm = () => {
   } = useForm();
   const [filePreview, setFilePreview] = useState(null);
 
-  // const onSubmit = (data) => {
-  //   // const { address, value } = data;
-
-  //   // Validate the address and value
-  // //   if (!address || !value) {
-  // //     alert('Address and value are required!');
-  // //     return;
-  // //   }
-  // //   const parsedValue = ethers.utils.parseEther(value);
-  // //   write({ args: [address, parsedValue] });
-  // };
   const convertToTimestamp = (date) => Math.floor(new Date(date).getTime() / 1000);
   const onSubmit = async (data) => {
 
     console.log(data)
 
-    // const value = data
     writeContract({
       address: '0x4F556164A12aA71c4f635cbBbeD2690831A4aBAD',
       abi,
@@ -42,41 +35,54 @@ const PatientForm = () => {
       args: [data.name,convertToTimestamp(data.dob), data.gender,12345, data.bloodType, data.nationality]
     })
 
-    // if(sent.addPatientDetails == 'addPatientDetails'){
-    //   toast.success("Patient Details Added Successfully!", {
-    //     position: "top-right",
-    //     autoClose: 3000, // Auto close after 3 seconds
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    //   reset();
-    // }
+    
   }
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash
   })
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
+  
 
-  //   // const value = data
-  //   writeContract({
-  //     address: '0x4F556164A12aA71c4f635cbBbeD2690831A4aBAD',
-  //     abi,
-  //     functionName: 'smartMed',
-  //     args: ["KC KC", "user@mail.com", "12/10/1999", "Male", "081234565678"]
-  //   })
-  // }
+  
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
       setFilePreview(URL.createObjectURL(file));
+
+      let formData = new FormData();
+      const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://uploads.pinata.cloud/v3/files',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_JWT}`
+        },
+        body: formData,
+      };
+      try {
+        const response = await axios.request(config);
+
+        console.log("Response data:", response.data);
+        setSuccess(true);
+
+        const reader = new FileReader();
+
+        reader.onloadend = async () => {
+          const base64Data = reader.result.split(",")[1];
+          console.log(base64Data);
+          setImage(response.data.data.id)
+          setImageCID(response.data.data.cid)
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+
+        toast.success("File uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading file:", error);
+        toast.error("Failed to upload file.");
+      }
     }
   };
   
@@ -210,7 +216,7 @@ const PatientForm = () => {
           <label
             htmlFor="file-upload"
             className="cursor-pointer"
-          >
+          >Upload your image
             <div className="text-4xl text-purple-500 mb-4">
               <i className="fas fa-cloud-upload-alt"></i>
             </div>

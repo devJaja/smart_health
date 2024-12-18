@@ -11,6 +11,7 @@ import DoctorDashboard from "./Components/DoctorsDashboard";
 import PatientOptions from "./Components/PatientOptions";
 import MyMedication from "./Components/MyMedication";
 import PatientInfo from "./Components/PatientsInfo";
+import Dashboard from "./Components/setAppointment";
 import config from '../config'; 
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ function App() {
                     <Route path="/patient-options" element={<PatientOptions />} />
                     <Route path="/my-medication" element={<MyMedication />} />
                     <Route path="/patient-info" element={<PatientInfo />} />
+                    <Route path="/set-appointment" element={<Dashboard />} />
                   </Routes> 
                 </main>
               </Router> 

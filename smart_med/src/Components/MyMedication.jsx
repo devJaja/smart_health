@@ -3,40 +3,34 @@ import React from "react";
 const MedicationAndTest = () => {
   const medications = [
     {
-      name: "Paracetamol",
-      dosage: "300 mg",
-      frequency: "Three times daily",
-      duration: "21 days",
-      prescribedBy: "Dr. Olivia Rhye",
+      name: "",
+      dosage: "",
+      frequency: "",
+      duration: "",
+      prescribedBy: "",
     },
     {
-      name: "Lisinopril",
-      dosage: "10mg",
-      frequency: "Three times daily",
-      duration: "21 days",
-      prescribedBy: "Dr. Olivia Rhye",
+      name: "",
+      dosage: "",
+      frequency: "",
+      duration: "",
+      prescribedBy: "",
     },
-    {
-      name: "Lisinopril",
-      dosage: "10mg",
-      frequency: "Three times daily",
-      duration: "21 days",
-      prescribedBy: "Dr. Olivia Rhye",
-    },
+    
   ];
 
   const tests = [
     {
-      name: "Complete Blood Count (CBC)",
-      date: "2025-12-12",
-      result: "Three times daily",
-      requestedBy: "Dr. Olivia Rhye",
+      name: "",
+      date: "",
+      result: "",
+      requestedBy: "",
     },
     {
-      name: "X-ray (Chest)",
-      date: "2021-01-01",
-      result: "Three times daily",
-      requestedBy: "Dr. Olivia Rhye",
+      name: "",
+      date: "",
+      result: "",
+      requestedBy: "",
     },
   ];
 

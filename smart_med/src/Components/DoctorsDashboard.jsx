@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 const DoctorDashboard = () => {
   const appointments = [
     {
@@ -6,14 +6,13 @@ const DoctorDashboard = () => {
       time: "11:00 am",
       patient: "Dorcas Dakkas",
       description:
-        "Lorem ipsum dolor sit amet consectetur. Amet facilisis tempor ut porttitor mattis tempor.",
+        "Stomach and severe back pain",
     },
     {
       id: 2,
       time: "09:00 am",
       patient: "Demi Wilkinson",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Amet facilisis tempor ut porttitor mattis tempor.",
+      description:'Spinal cord problem'
     },
   ];
 
@@ -27,6 +26,7 @@ const DoctorDashboard = () => {
     "Kristin Watson",
     "Darlene Robertson",
   ];
+  const [isRequestVisible, setIsRequestVisible] = useState(true);
 
   return (
     <div className="p-16 mt-4 bg-gray-50 min-h-screen flex flex-col  gap-6">
@@ -64,14 +64,23 @@ const DoctorDashboard = () => {
           ))}
           {/* Appointment Request */}
           <h2 className="text-lg font-semibold mt-6">Appointment Request</h2>
-          <div className="p-4 mt-2 border rounded-lg bg-gray-50 shadow-sm flex items-center justify-between">
-            <p className="text-gray-700 font-medium">Dianne Russell</p>
-            <div className="flex gap-2">
-              <button className="text-gray-500 hover:text-gray-700">✅</button>
-              <button className="text-gray-500 hover:text-gray-700">❌</button>
-              <button className="text-gray-500 hover:text-gray-700">📄</button>
+          {isRequestVisible && (
+            <div className="p-4 mt-2 border rounded-lg bg-gray-50 shadow-sm flex items-center justify-between">
+              <p className="text-gray-700 font-medium">Dianne Russell</p>
+              <div className="flex gap-2">
+                <button className="text-gray-500 hover:text-gray-700"
+                onClick={()=>alert("Aproved successfully!")} 
+                >✅</button>
+                <button
+                  className="text-gray-500 hover:text-gray-700"
+                  onClick={() => setIsRequestVisible(false)} // Hide the request
+                >
+                  ❌
+                </button>
+                <button className="text-gray-500 hover:text-gray-700">📄</button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Middle Section */}
@@ -79,7 +88,7 @@ const DoctorDashboard = () => {
           <h2 className="text-lg font-semibold mb-4">My Bio</h2>
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-semibold text-gray-800">Dianne Russell</p>
+              <p className="font-semibold text-gray-800"> Dr. Daniel John</p>
               <p className="text-gray-500">Phone Number: +234 9011238451</p>
               <p className="text-gray-500">Email: diannerussel@gmail.com</p>
             </div>
